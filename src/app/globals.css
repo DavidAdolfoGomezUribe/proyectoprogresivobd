@@ -2,10 +2,6 @@
 
 /* Estilo global para el body de todas las paginas D.A.G.U. */
 
-@font-face {
-  font-family:"Rubik-Regular.ttf" ;
-  src: url("/fonts/Rubik-Regular.ttf");
-}
 
 *{
   font-family:"Rubik-Regular.ttf" ;
@@ -13,3 +9,12 @@
 body{
   background-color: rgb(244,245,251);
 }
+
+
+/* Estilo de letras globales */
+
+@font-face {
+  font-family:"Rubik-Regular.ttf" ;
+  src: url("/fonts/Rubik-Regular.ttf");
+}
+
