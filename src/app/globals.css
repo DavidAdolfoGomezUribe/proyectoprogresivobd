@@ -18,3 +18,20 @@ body{
   src: url("/fonts/Rubik-Regular.ttf");
 }
 
+@font-face {
+  font-family:"Rubik-Black.ttf" ;
+  src: url("/fonts/Rubik-Black.ttf");
+}
+
+@font-face {
+  font-family:"Rubik-Bold.ttf" ;
+  src: url("/fonts/Rubik-Bold.ttf");
+}
+
+.titulo{
+  font-family:"Rubik-Black.ttf" ;
+}
+
+.subtitulo{
+  font-family:"Rubik-Bold.ttf" ;
+}

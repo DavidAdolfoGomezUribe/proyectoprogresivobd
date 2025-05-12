@@ -21,11 +21,11 @@ export default function Home() {
       <div className="mx-[10%] flex flex-row justify-between items-center h-20">
 
         {/* logo*/}
-        <p>logo</p>
+        <h1 className="titulo text-3xl" >Play_</h1>
        
-        <div>
-          <button>Login</button>
-          <button>Leader Board</button>
+        <div className="flex flex-row gap-8">
+          <button className="w-24 p-2 cursor-pointer  hover:rounded-2xl hover:bg-blue-400">Login</button>
+          <button className="w-32 p-2 cursor-pointer hover:rounded-2xl hover:bg-blue-400">Leader Board</button>
         </div>
 
       </div>
@@ -36,7 +36,7 @@ export default function Home() {
         
         <article className="flex flex-col w-[60%] gap-10 justify-center" >
 
-            <h1>¿Qué es una base de datos NoSQL? </h1>
+            <h1 className="subtitulo text-2xl">¿Qué es una base de datos NoSQL? </h1>
             
             <p className="w-[80%]">NoSQL, también conocido como "no sólo SQL" o "no SQL", es un enfoque utilizado en 
             el diseño de bases de datos que permite el almacenamiento y 
@@ -51,7 +51,7 @@ export default function Home() {
         
         <aside className="w-[50%] flex items-center" >
           
-          <Image className="w-full h-auto" src={"/jostickhand.svg"}width={100} height={100} alt="jostickhand" />        
+          <Image className="w-full h-auto" src={"/jostickhand.svg"}width={500} height={500} alt="jostickhand" />        
         
         </aside>
         
@@ -60,7 +60,7 @@ export default function Home() {
 
       <section className="pt-20 flex flex-col gap-5 items-center">
         <article>
-          <p>We are trusted by hundreads of game companies</p>
+          <h1 className="subtitulo text-3xl">Cientos de empresas de juegos confían en nosotros</h1>
         </article>
 
         <article className="flex flex-row gap-10">
@@ -75,18 +75,18 @@ export default function Home() {
 
       <section className="pt-20 flex flex-col items-center">
         <article>
-          <div>
-            <h2> caracteristicas</h2>
-            <h1>Ejemplos</h1>
-            <p>bases de datos NoSQL</p>
+          <div className="flex flex-col gap-3">
+            <h2 className="subtitulo text-blue-500 text-2xl text-center"> Caracteristicas</h2>
+            
+            <h1 className="subtitulo  text-4xl text-center">BASES DE DATOS NoSQL</h1>
 
           </div>
 
-          <div className="flex flex-wrap gap-20 pt-10 justify-between  w-[100%]">
+          <div className="flex flex-wrap gap-15 pt-10 justify-center  w-[100%]">
 
-            <div className="w-180">
-              <p>📦</p>
-              <h1> Modelo de datos flexible {"("}sin esquemas rígidos{")"}</h1>
+            <div className="w-180 flex flex-col items-center gap-2 bg-[#252525] text-white p-4 rounded-2xl">
+              <Image className="w-1/7 " src="/packaje.png" width={500} height={500} alt="packaje" />
+              <h1 className="subtitulo text-2xl"> Modelo de datos flexible {"("}sin esquemas rígidos{")"}</h1>
               <p>En una base de datos NoSQL como MongoDB, puedes guardar documentos con estructuras diferentes en la misma colección. Por ejemplo:</p>
               <CodeBlock code={ejemploCodigo} language="json" />
               <p>👉 Esto permite adaptarse rápidamente a cambios sin migraciones complejas, a diferencia de las bases SQL donde debes modificar la estructura de las tablas.</p>
@@ -94,28 +94,29 @@ export default function Home() {
             </div>
             
             
-            <div className="w-180">
-              <p>⚡</p>
-              <p>Alta escalabilidad horizontal</p>
+            <div className="w-180 flex flex-col items-center gap-2 bg-[#252525] text-white p-4 rounded-2xl">
+              <Image className="w-1/7 " src="/thunder.png" width={500} height={500} alt="packaje" />
+              <h1 className="subtitulo text-2xl">Alta escalabilidad horizontal</h1>
               <p>Bases como Cassandra permiten distribuir datos entre múltiples servidores fácilmente.
                  Si tu aplicación crece, puedes agregar más nodos sin rediseñar tu base de datos.
-
-              ✅ Ideal para aplicaciones que manejan grandes volúmenes de datos y requieren alta disponibilidad.
               </p>
+              <br />
+              <p>✅ Ideal para aplicaciones que manejan grandes volúmenes de datos y requieren alta disponibilidad.</p>
+                
             </div>
             
-            <div className="w-180">
-              <p>🌐</p>
-              <p>Optimizado para grandes cantidades de datos no estructurados</p>
+            <div className="w-180 flex flex-col items-center gap-2 bg-[#252525] text-white p-4 rounded-2xl">
+              <Image className="w-1/7 rounded-full " src="/globev.webp" width={500} height={500} alt="packaje" />
+              <h1 className="subtitulo text-2xl text-center">Optimizado para grandes cantidades de datos no estructurados</h1>
               <p>Elasticsearch, una base NoSQL orientada a búsquedas, permite almacenar y consultar rápidamente millones de documentos de texto, logs o contenido web.
                 🧠 Perfecto para búsquedas inteligentes y análisis de texto en tiempo real.
               </p>
             </div>
             
             
-            <div className="w-180">
-              <p>🗃️</p>
-              <p> Soporte para distintos modelos {"("} clave-valor, documentos, grafos, columnas{")"}</p>
+            <div className="w-180 flex flex-col items-center gap-2 bg-[#252525] text-white p-4 rounded-2xl">
+              <Image className="w-1/7  " src="/filebox.svg" width={500} height={500} alt="packaje" /> 
+              <h1 className="subtitulo text-2xl text-center"> Soporte para distintos modelos {"("} clave-valor, documentos, grafos, columnas{")"}</h1>
               <p>NoSQL no es un solo tipo de base: incluye varios modelos según el uso. Por ejemplo:
 
                   Redis usa clave-valor (ideal para caché).
@@ -129,9 +130,9 @@ export default function Home() {
             </div>
             
             
-            <div className="w-180">
-              <p> 🔁 </p>
-              <p>Alto rendimiento con grandes volúmenes y baja latencia</p>
+            <div className="w-180 flex flex-col items-center gap-2 bg-[#252525] text-white p-4 rounded-2xl">
+              <Image className="w-1/7  " src="/arrows.svg" width={500} height={500} alt="packaje" /> 
+              <h1 className="subtitulo text-2xl">Alto rendimiento con grandes volúmenes y baja latencia</h1>
               <p>NoSQL está diseñado para velocidad. Por ejemplo, Redis guarda datos en memoria, lo que permite leer y escribir en milisegundos, ideal para sistemas de recomendaciones o chats en tiempo real.
 
               🚀 NoSQL prioriza el rendimiento y la disponibilidad por encima de la consistencia inmediata {"("}según el modelo CAP {")"} .</p>
@@ -145,13 +146,11 @@ export default function Home() {
 
       <section className="pt-20">
         <article>
-          <h2>casos</h2>
-          <h1>ejemplos graficos</h1>
-          <div>
-            <p>imagen 1</p>
-            <p>imagen 2</p>
-            <p>imagen 3</p>
-            <p>imagen 4</p>
+          
+          
+          <div className="flex flex-row gap-0.5 w-full rounded-2xl border-3 border-solid bg-[#252525] p-3">
+            <Image className="w-1/2 rounded-2xl" src={"/nd.jpg"}  width={500} height={500} alt="db"/>
+            <Image  className="w-1/2 rounded-2xl" src={"/NoSQL4.webp"}  width={500} height={500} alt="db"/>
           </div>
 
         </article>
@@ -163,7 +162,7 @@ export default function Home() {
 
         <article className="flex flex-row">
           <div>
-            <p>imagen</p>
+            <p>img</p>
             <h1>David Gomez</h1>
             <p>cargo</p>
           </div>
@@ -190,8 +189,11 @@ export default function Home() {
 
 
     </main>
-    <footer className="mx-[10%] bg-amber-300">
-      <p>contactenos</p>
+    <footer className="bg-[#353535] h-35 text-white">
+      <div>
+
+        <p>contactenos</p>
+      </div>
     </footer>
 
 

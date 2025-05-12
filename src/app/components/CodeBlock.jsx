@@ -10,7 +10,7 @@ export default function CodeBlock({ code, language = "json" }) {
   }, []);
 
   return (
-    <pre className="bg-[#343434] text-white p-4 rounded overflow-x-auto">
+    <pre className="bg-[#343434] text-white p-4 rounded-2xl overflow-x-auto">
       <code className={`language-${language}`}>
         {code}
       </code>
