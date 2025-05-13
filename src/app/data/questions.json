@@ -1,0 +1,22 @@
+[
+  {
+    "question": "¿Cuál es la capital de Francia?",
+    "options": ["Madrid", "París", "Londres", "Berlín"],
+    "answer": "París"
+  },
+  {
+    "question": "¿Cuánto es 2 + 2?",
+    "options": ["3", "4", "5", "22"],
+    "answer": "4"
+  },
+  {
+    "question": "¿Cual es el mamifero mas grande del mundo?",
+    "options": ["vaca", "burra", "cobra", "ballena"],
+    "answer": "burra"
+  },
+  {
+    "question": "¿Quien es el mas sexy del salon?",
+    "options": ["David Adolfo", "Daniel Cubides", "Mateo", "Breyner"],
+    "answer": "Breyner" 
+  }
+]

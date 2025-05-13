@@ -2,37 +2,32 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import styles from "./page.module.css"
+import questions from "@/app/data/questions.json"
 
 export default function GamePage() {
   const [loading, setLoading] = useState(true)
   const [userData, setUserData] = useState(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [lives, setLives] = useState(3)
+  const [timeLeft, setTimeLeft] = useState(60)
+  const [gameOver, setGameOver] = useState(false)
+  const [feedbackColor, setFeedbackColor] = useState(null)
   const router = useRouter()
 
+  // Validar token de sesión
   useEffect(() => {
-    // Verificar autenticación
-    const checkAuth = () => {
-      const token = localStorage.getItem("authToken")
+    const token = localStorage.getItem("authToken")
+    if (!token) return router.push("/login")
 
-      if (!token) {
-        router.push("/login")
-        return
-      }
-
-      try {
-        // Decodificar el token (en una app real usarías JWT u otro método seguro)
-        const decoded = JSON.parse(atob(token))
-        setUserData(decoded)
-        setLoading(false)
-      } catch (error) {
-        console.error("Token inválido", error)
-        localStorage.removeItem("authToken")
-        router.push("/login")
-      }
+    try {
+      const decoded = JSON.parse(atob(token))
+      setUserData(decoded)
+      setLoading(false)
+    } catch {
+      localStorage.removeItem("authToken")
+      router.push("/login")
     }
 
-    checkAuth()
-
-    // Monitorear cambios en localStorage para seguridad adicional
     const handleStorageChange = (e) => {
       if (e.key === "authToken" && !e.newValue) {
         router.push("/login")
@@ -40,15 +35,52 @@ export default function GamePage() {
     }
 
     window.addEventListener("storage", handleStorageChange)
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange)
-    }
+    return () => window.removeEventListener("storage", handleStorageChange)
   }, [router])
+
+  // Temporizador
+  useEffect(() => {
+    if (timeLeft <= 0 || lives <= 0) {
+      setGameOver(true)
+    }
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => Math.max(prev - 1, 0))
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [timeLeft, lives])
+
+  const handleAnswer = (selected) => {
+    const currentQuestion = questions[currentIndex]
+    const isCorrect = selected === currentQuestion.answer
+
+    if (isCorrect) {
+      setTimeLeft((prev) => Math.min(prev + 10, 60))
+      setFeedbackColor("green")
+    } else {
+      setLives((prev) => prev - 1)
+      setFeedbackColor("red")
+    }
+
+    setTimeout(() => {
+      setFeedbackColor(null)
+      if (currentIndex + 1 < questions.length) {
+        setCurrentIndex((prev) => prev + 1)
+      } else {
+        setGameOver(true)
+      }
+    }, 1000)
+  }
 
   const handleLogout = () => {
     localStorage.removeItem("authToken")
     router.push("/login")
+  }
+
+  const handleRetry = () => {
+    setCurrentIndex(0)
+    setLives(3)
+    setTimeLeft(60)
+    setGameOver(false)
   }
 
   if (loading) {
@@ -60,22 +92,19 @@ export default function GamePage() {
     )
   }
 
+  const currentQuestion = questions[currentIndex]
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.gameStats}>
           <div className={styles.timer}>
-            <span className={styles.timerValue}>30</span>
+            <span className={styles.timerValue}>{timeLeft}</span>
             <span className={styles.timerLabel}>seg</span>
           </div>
         </div>
-
         <div className={styles.headerRight}>
-          <div className={styles.lives}>
-            <span className={styles.heart}>❤️</span>
-            <span className={styles.heart}>❤️</span>
-            <span className={styles.heart}>❤️</span>
-          </div>
+          <div className={styles.lives}>❤️ x {lives}</div>
           <button onClick={handleLogout} className={styles.logoutButton}>
             Cerrar Sesión
           </button>
@@ -83,27 +112,35 @@ export default function GamePage() {
       </header>
 
       <main className={styles.main}>
-        <div className={styles.gameContent}>
-          {/* Contenedor de la pregunta */}
-          <div className={styles.questionContainer}>
-            <h2 className={styles.questionText}>¿Cuál es la capital de Francia?</h2>
+        {!gameOver ? (
+          <div className={styles.gameContent}>
+            <div
+              className={styles.questionContainer}
+              style={{ backgroundColor: feedbackColor || "transparent" }}
+            >
+              <h2 className={styles.questionText}>{currentQuestion.question}</h2>
+            </div>
+            <div className={styles.optionsGrid}>
+              {currentQuestion.options.map((option, index) => (
+                <button
+                  key={index}
+                  className={styles.optionButton}
+                  onClick={() => handleAnswer(option)}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
           </div>
-
-          {/* Opciones de respuesta */}
-          <div className={styles.optionsGrid}>
-            <button className={styles.optionButton}>Madrid</button>
-            <button className={styles.optionButton}>Berlín</button>
-            <button className={styles.optionButton}>París</button>
-            <button className={styles.optionButton}>Roma</button>
+        ) : (
+          <div className={styles.gameOverScreen}>
+            <h2 className={styles.gameOverText}>Game Over</h2>
+            <button onClick={handleRetry} className={styles.retryButton}>Reintentar</button>
+            <button onClick={() => router.push("/")} className={styles.homeButton}>
+              Volver al inicio
+            </button>
           </div>
-        </div>
-
-        {/* Pantalla de Game Over (oculta por defecto) */}
-        <div className={styles.gameOverScreen} style={{ display: "none" }}>
-          <h2 className={styles.gameOverText}>Game Over</h2>
-          <button className={styles.retryButton}>Reintentar</button>
-          <button className={styles.homeButton}>Volver al inicio</button>
-        </div>
+        )}
       </main>
     </div>
   )
