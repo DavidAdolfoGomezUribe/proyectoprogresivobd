@@ -157,29 +157,32 @@ export default function Home() {
 
       </section>
 
-      <section className="pt-20 flex flex-col" >
-        <h1>Nuestro Equipo</h1>
+      <section className="pt-20 pb-20 flex flex-col gap-7" >
+        <h1 className="subtitulo text-4xl text-center text-blue-500">Nuestro Equipo</h1>
 
-        <article className="flex flex-row">
-          <div>
-            <p>img</p>
-            <h1>David Gomez</h1>
-            <p>cargo</p>
+        <article className="flex flex-row gap-4">
+          <div className="p-4 bg-[#252525] w-1/2  rounded-2xl text-white flex flex-col gap-2">
+            <Image className="w-[100%] h-auto rounded-2xl" src="/dav.png" width={500} height={500} alt="packaje" /> 
+            <h1 className="subtitulo text-2xl">David Gomez</h1>
+            <p className="text-2xl">Director ejecutivo</p>
           </div>
-          <div>
+          
+          <div className="p-4 bg-[#252525] w-1/2  rounded-2xl text-white flex flex-col gap-2">
             <p>imagen</p>
-            <h1>Breyner Pinto</h1>
-            <p>cargo</p>
+            <h1 className="subtitulo text-2xl">Breyner Pinto</h1>
+            <p>Administrador de bases de datos</p>
           </div>
-          <div>
-            <p>imagen</p>
-            <h1>Mateo Paternina</h1>
-            <p>cargo</p>
+          
+          <div className="p-4 bg-[#252525] w-1/2  rounded-2xl text-white flex flex-col gap-2">
+            <Image className="w-[100%] h-auto rounded-2xl" src="/mat.png" width={500} height={500} alt="packaje" /> 
+            <h1 className="subtitulo text-2xl">Mateo Paternina</h1>
+            <p>Director de tecnología</p>
           </div>
-          <div>
-            <p>imagen</p>
-            <h1>Daniel Cubides</h1>
-            <p>cargo</p>
+          
+          <div className="p-4 bg-[#252525] w-1/2  rounded-2xl text-white flex flex-col gap-2">
+            <Image className="w-[100%] h-auto rounded-2xl" src="/dan.png" width={500} height={500} alt="packaje" /> 
+            <h1 className="subtitulo text-2xl">Daniel Cubides</h1>
+            <p>Director de Seguridad de la Información</p>
           </div>
 
         </article>
@@ -189,10 +192,10 @@ export default function Home() {
 
 
     </main>
-    <footer className="bg-[#353535] h-35 text-white">
+    <footer className="bg-[#353535] h-15 text-white flex items-center">
       <div>
 
-        <p>contactenos</p>
+        <p  className="subtitulo pl-4">Todos los derechos reservados copyright 2025</p>
       </div>
     </footer>
 
