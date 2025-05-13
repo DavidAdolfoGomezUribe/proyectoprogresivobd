@@ -63,24 +63,46 @@ export default function GamePage() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h1>Página de Juego</h1>
-        <button onClick={handleLogout} className={styles.logoutButton}>
-          Cerrar Sesión
-        </button>
+        <div className={styles.gameStats}>
+          <div className={styles.timer}>
+            <span className={styles.timerValue}>30</span>
+            <span className={styles.timerLabel}>seg</span>
+          </div>
+        </div>
+
+        <div className={styles.headerRight}>
+          <div className={styles.lives}>
+            <span className={styles.heart}>❤️</span>
+            <span className={styles.heart}>❤️</span>
+            <span className={styles.heart}>❤️</span>
+          </div>
+          <button onClick={handleLogout} className={styles.logoutButton}>
+            Cerrar Sesión
+          </button>
+        </div>
       </header>
 
       <main className={styles.main}>
-        <div className={styles.welcomeCard}>
-          <h2>¡Bienvenido!</h2>
-          <p>
-            Has iniciado sesión correctamente con el email: <strong>{userData?.email}</strong>
-          </p>
-          <p>Esta es la página protegida del juego. Solo usuarios autenticados pueden verla.</p>
+        <div className={styles.gameContent}>
+          {/* Contenedor de la pregunta */}
+          <div className={styles.questionContainer}>
+            <h2 className={styles.questionText}>¿Cuál es la capital de Francia?</h2>
+          </div>
+
+          {/* Opciones de respuesta */}
+          <div className={styles.optionsGrid}>
+            <button className={styles.optionButton}>Madrid</button>
+            <button className={styles.optionButton}>Berlín</button>
+            <button className={styles.optionButton}>París</button>
+            <button className={styles.optionButton}>Roma</button>
+          </div>
         </div>
 
-        <div className={styles.gameContent}>
-          <h3>Contenido del Juego</h3>
-          <p>Aquí iría el contenido principal de tu juego.</p>
+        {/* Pantalla de Game Over (oculta por defecto) */}
+        <div className={styles.gameOverScreen} style={{ display: "none" }}>
+          <h2 className={styles.gameOverText}>Game Over</h2>
+          <button className={styles.retryButton}>Reintentar</button>
+          <button className={styles.homeButton}>Volver al inicio</button>
         </div>
       </main>
     </div>
