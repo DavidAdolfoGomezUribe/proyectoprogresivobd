@@ -3,6 +3,7 @@
 import Image from "next/image";
 import CodeBlock from "./components/CodeBlock"; 
 
+import Link from "next/link";
 
 export default function Home() {
   const ejemploCodigo = `
@@ -24,7 +25,7 @@ export default function Home() {
         <h1 className="titulo text-3xl" >Play_</h1>
        
         <div className="flex flex-row gap-8">
-          <button className="w-24 p-2 cursor-pointer  hover:rounded-2xl hover:bg-blue-400">Login</button>
+          <Link href={"/login"} className="w-24 p-2 cursor-pointer  hover:rounded-2xl hover:bg-blue-400">Login</Link>
           <button className="w-32 p-2 cursor-pointer hover:rounded-2xl hover:bg-blue-400">Leader Board</button>
         </div>
 
@@ -200,6 +201,7 @@ export default function Home() {
     </footer>
 
 
+   
    </>
   );
 }
