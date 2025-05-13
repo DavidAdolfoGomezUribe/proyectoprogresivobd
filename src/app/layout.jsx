@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import "prismjs/themes/prism-tomorrow.css"; 
 import "./globals.css";
 
 const geistSans = Geist({
