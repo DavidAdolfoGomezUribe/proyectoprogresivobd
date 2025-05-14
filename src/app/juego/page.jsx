@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import questions from "@/app/data/questions.json";
-
+/* import { JSON } from "stream/consumers";
+ */
 export default function GamePage() {
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(null);
@@ -27,7 +28,7 @@ export default function GamePage() {
     try {
       const decoded = JSON.parse(atob(token));
       setUserData(decoded);      
-      fetchUserScore(decoded.email);
+      
       setLoading(false);
     } catch {
       localStorage.removeItem("authToken");
@@ -44,17 +45,8 @@ export default function GamePage() {
     return () => window.removeEventListener("storage", handleStorageChange);
   }, [router]);
 
-  const fetchUserScore = async (email) => {
-    try {
-      const res = await fetch("https://681cec17f74de1d219ae45cd.mockapi.io/Users");
-      const data = await res.json();
-      const user = data.find((u) => u.email === email);
-      if (user?.score) setTotalScore(user.score);
-    } catch (error) {
-      console.error("Error al obtener score:", error);
-    }
-  };
-
+    
+  
   // Temporizador
   useEffect(() => {
     if (timeLeft <= 0 || lives <= 0) {
@@ -79,13 +71,13 @@ export default function GamePage() {
 
   const updateUserScore = async (score) => {
     try {
-      if (user) {
+      if (userData) {
         const updatedScore = score;
-
-        await fetch(`https://681cec17f74de1d219ae45cd.mockapi.io/Users/${user.id}`, {
-          method: "PUT",
+        const email = userData
+        await fetch(`https://681cec17f74de1d219ae45cd.mockapi.io/leaderBoard`, {
+          method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ score: updatedScore, user: decoded.email }),
+          body: JSON.stringify({ score: updatedScore, user: email.email }),
         });
         setTotalScore(updatedScore);
       }
