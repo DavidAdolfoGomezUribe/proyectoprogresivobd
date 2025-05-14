@@ -48,6 +48,14 @@ const Game = () => {
     return <GameOver />;
   }
 
+  /* ESTADO: */
+  const [progress, setProgress] = useState([]); // array de 'correct' o 'incorrect'
+  const handleAnswerProgress = (isCorrect) => {
+    setProgress((prev) => [...prev, isCorrect ? 'correct' : 'incorrect']);
+    // seguir con lógica de avanzar pregunta
+  };
+
+
   return (
     <div className="game">
       <Timer time={timeLeft} />
