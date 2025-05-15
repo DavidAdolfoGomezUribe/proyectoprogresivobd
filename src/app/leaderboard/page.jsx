@@ -41,9 +41,9 @@ export default function Page() {
       
       <div className="pt-17"> 
         {sortedElements.map((entry, index) => (
-            <div key={entry.id || index}>
-            <p><strong>Usuario:</strong> {entry.user}</p>
-            <p><strong>Puntaje:</strong> {entry.score}</p>
+            <div className="flex flex-row w-full justify-self-auto gap-7" key={entry.id || index}>
+            <p className="w-150"><strong>Usuario:</strong> {entry.user}</p>
+            <p className="w-150"><strong>Puntaje:</strong> {entry.score}</p>
             </div>
         ))}
 
