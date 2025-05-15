@@ -14,9 +14,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 5%;
-  background-color: #ff0066;
+  background: linear-gradient(90deg, #0066ff, #3333ff);
   border-bottom: 4px solid #ffffff;
-  box-shadow: 0 0 15px rgba(255, 0, 102, 0.7);
+  box-shadow: 0 0 15px rgba(0, 102, 255, 0.7);
   position: relative;
 }
 
@@ -80,7 +80,7 @@
   right: 0;
   bottom: 0;
   background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.1) 50%),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.03), rgba(0, 0, 255, 0.03));
+    linear-gradient(90deg, rgba(0, 102, 255, 0.03), rgba(51, 51, 255, 0.03), rgba(0, 102, 255, 0.03));
   background-size: 100% 2px, 3px 100%;
   pointer-events: none;
   z-index: 10;
@@ -176,12 +176,12 @@
   display: inline-block;
   margin-top: 1.5rem;
   padding: 0.75rem 2rem;
-  background-color: #ff0066;
+  background-color: #0066ff;
   color: #ffffff;
   text-decoration: none;
   border: 3px solid #ffffff;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(255, 0, 102, 0.7), inset 0 0 5px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 102, 255, 0.7), inset 0 0 5px rgba(255, 255, 255, 0.5);
   transition: all 0.2s ease;
   text-align: center;
   position: relative;
@@ -208,7 +208,7 @@
 
 .arcade-button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(255, 0, 102, 0.9), inset 0 0 10px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 15px rgba(0, 102, 255, 0.9), inset 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .button-text {
