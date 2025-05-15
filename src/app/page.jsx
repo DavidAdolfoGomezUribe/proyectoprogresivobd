@@ -26,7 +26,7 @@ export default function Home() {
        
         <div className="flex flex-row gap-8">
           <Link href={"/login"} className="w-24 p-2 cursor-pointer  hover:rounded-2xl hover:bg-blue-600 hover:text-white text-center">Login</Link>
-          <button className="w-32 p-2 cursor-pointer hover:rounded-2xl hover:bg-blue-600 hover:text-white">Leader Board</button>
+          <Link href={"/leaderboard"} className="w-32 p-2 cursor-pointer hover:rounded-2xl hover:bg-blue-600 hover:text-white text-center" >Leader Board</Link>
         </div>
 
       </div>
