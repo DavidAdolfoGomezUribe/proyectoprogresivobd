@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# 🎮 Proyecto Arcade 
 
-First, run the development server:
+Este proyecto es una aplicación web de preguntas y respuestas tipo trivia con estética de videojuego arcade. Desarrollado en equipo con fines educativos, combina diseño retro, interactividad, puntuaciones en tiempo real y una tabla de clasificación (*Leaderboard*).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 📌 Descripción General
+
+El juego consiste en responder una serie de preguntas de opción múltiple dentro de un límite de tiempo. Cada respuesta correcta suma puntos, mientras que las incorrectas restan vidas. Al finalizar, el usuario puede ver su resultado, acceder al leaderboard y jugar nuevamente para mejorar su puntuación.
+
+Además, el juego guarda las puntuaciones acumuladas de cada usuario en una base de datos externa (MockAPI), lo que permite llevar un control del rendimiento total de cada jugador.
+
+---
+
+## 🧩 Funcionalidades Principales
+
+- 🎲 Juego de preguntas y respuestas tipo trivia.
+- ❤️ Sistema de vidas (pierdes si se acaban).
+- ⏱️ Temporizador por pregunta con bonificación por rapidez.
+- 💬 Mensajes personalizados según el resultado ("¡Ganaste!" / "Game Over").
+- 🔁 Posibilidad de jugar otra ronda con nuevas preguntas.
+- 📊 Registro del puntaje acumulado en MockAPI por usuario.
+- 🏆 Leaderboard global en tiempo real con top de puntuaciones.
+- 🧠 Preguntas cargadas desde archivo JSON para control total.
+- 🔄 Transición automática entre preguntas con animaciones.
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Next.js 14** – Framework React para renderizado híbrido (SSR/CSR).
+- **React** – Librería para la interfaz de usuario.
+- **CSS Modules** – Estilizado modular y reutilizable.
+- **MockAPI** – Servicio externo de base de datos simulada para usuarios y leaderboard.
+- **JavaScript moderno (ES6+)**
+- **HTML semántico y accesible**
+
+---
+
+## 🖥️ Diseño y Usabilidad
+
+- 🎮 Inspiración retro/arcade con efectos de texto neón, escaneo de pantalla, y tipografía pixelada.
+- 📱 **Diseño responsive** compatible con móviles, tablets y desktop.
+- 🔒 Buenas prácticas de estructura, código limpio y componentes reutilizables.
+
+---
+
+## 🚀 Instalación y Uso
+
+1. **Clona el repositorio**
+
+   ```bash
+   git clone https://github.com/tu-usuario/nombre-del-proyecto.git
+   cd nombre-del-proyecto
+   ```
+
+2. **Instala las dependencias**
+
+   ```bash
+   npm install
+   ```
+
+3. **Ejecuta el servidor de desarrollo**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Abre en el navegador**
+
+   Visita `http://localhost:3000` para comenzar a jugar.
+
+---
+
+## 📂 Estructura del Proyecto
+
+```
+📁 /app
+ ┣ 📁 /leaderboard      → Página con el top global de puntuaciones
+ ┣ 📁 /game             → Lógica y pantalla principal del juego
+ ┗ 📜 page.tsx          → Página principal con opciones
+
+📁 /components
+ ┣ 📜 QuestionCard.tsx  → Componente que muestra cada pregunta
+ ┣ 📜 GameOverModal.tsx → Modal de derrota o victoria
+ ┗ 📜 ScoreBar.tsx      → Vidas, puntaje y tiempo
+
+📁 /data
+ ┗ 📜 questions.json     → Preguntas precargadas del juego
+
+📁 /styles
+ ┗ 📜 styles.module.css  → Estilos retro-arcade
+
+📁 /utils
+ ┗ 📜 api.js             → Funciones para interactuar con MockAPI
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📡 API y Base de Datos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Usamos [MockAPI](https://mockapi.io/) para:
 
-## Learn More
+- Guardar los puntajes acumulados por usuario (`/users`)
+- Registrar cada partida individual con su score (`/leaderBoard`)
 
-To learn more about Next.js, take a look at the following resources:
+Esto permite tener:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Score total actualizado por usuario
+- Ranking general en la sección *Leaderboard*
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 👥 Créditos del Equipo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Desarrollado por:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 👨‍💻 David Adolfo
+- 👩‍💻 Breyner Pinto	
+- 👨‍💻 Mateo Paternina
+- 👩‍💻 Daniel Cubides
+
+Con colaboración, organización por ramas, uso de buenas prácticas y planificación SCRUM con historias de usuario y priorización MoSCoW.
+
+---
+
+## 🧠 Posibles Mejoras Futuras
+
+- 🌍 Internacionalización (i18n) con varios idiomas.
+- 🔊 Efectos sonoros y música de fondo.
+- 🧩 Más tipos de preguntas o niveles de dificultad.
+
+---
+
+## 📚 Licencia
+
+Este proyecto fue creado con fines **educativos**. Puede reutilizarse para estudios personales o proyectos similares, respetando los créditos del equipo.
+
+---
+
+> “Crea, juega y aprende: el código también es diversión.” – Grupo 4 🎮
