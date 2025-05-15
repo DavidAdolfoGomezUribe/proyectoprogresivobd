@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import styles from "./page.module.css";
+import styles from "../juego/page.module.css";
 import questions from "@/app/data/questions.json";
-/* import { JSON } from "stream/consumers";
- */
+
 export default function GamePage() {
   const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState(null);
@@ -15,20 +14,16 @@ export default function GamePage() {
   const [gameOver, setGameOver] = useState(false);
   const [feedbackColor, setFeedbackColor] = useState(null);
   const [progress, setProgress] = useState([]);
-  const [roundScore, setRoundScore] = useState(0);
-  const [totalScore, setTotalScore] = useState(0);
-  const [questionsRound, setQuestionsRound] = useState(questions.slice(0, 10));
-  const [win, setWin] = useState(false);
   const router = useRouter();
 
+  // Validar sesión
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (!token) return router.push("/login");
 
     try {
       const decoded = JSON.parse(atob(token));
-      setUserData(decoded);      
-      
+      setUserData(decoded);
       setLoading(false);
     } catch {
       localStorage.removeItem("authToken");
@@ -45,52 +40,57 @@ export default function GamePage() {
     return () => window.removeEventListener("storage", handleStorageChange);
   }, [router]);
 
-    
-  
   // Temporizador
   useEffect(() => {
     if (timeLeft <= 0 || lives <= 0) {
       setGameOver(true);
-      setWin(false);
     }
+
     const timer = setInterval(() => {
       setTimeLeft((prev) => Math.max(prev - 1, 0));
     }, 1000);
+
     return () => clearInterval(timer);
   }, [timeLeft, lives]);
 
-  // Resultado de ronda
+  // Subir puntuación al MockAPI
   useEffect(() => {
-    if (gameOver && userData) {
+    if (gameOver && progress.length === 10 && userData) {
       const score = timeLeft * lives * 10;
-      if (progress.length === 10) setWin(true);
-      setRoundScore(score);
-      updateUserScore(score);
+      uploadScore(score);
     }
-  }, [gameOver, userData]);
+  }, [gameOver, progress, userData]);
 
-  const updateUserScore = async (score) => {
+  const uploadScore = async (score) => {
     try {
-      if (userData) {
-        const updatedScore = score;
-        const email = userData
-        await fetch(`https://681cec17f74de1d219ae45cd.mockapi.io/leaderBoard`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ score: updatedScore, user: email.email }),
-        });
-        setTotalScore(updatedScore);
-      }
+      const payload = {
+        userId: userData.userId,
+        email: userData.email,
+        score,
+        date: new Date().toISOString(),
+      };
+
+      await fetch("https://<TU_MOCKAPI_URL>/scores", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      console.log("Puntuación subida:", payload);
     } catch (error) {
-      console.error("Error actualizando el score:", error);
+      console.error("Error al subir puntuación:", error);
     }
   };
 
   const handleAnswer = (selected) => {
-    const currentQuestion = questionsRound[currentIndex];
+    const currentQuestion = questions[currentIndex];
     const isCorrect = selected === currentQuestion.answer;
 
+    // Actualiza progreso visual
     setProgress((prev) => [...prev, isCorrect ? "correct" : "incorrect"]);
+
     if (isCorrect) {
       setTimeLeft((prev) => Math.min(prev + 10, 60));
       setFeedbackColor("green");
@@ -109,25 +109,17 @@ export default function GamePage() {
     }, 1000);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    router.push("/login");
+  };
+
   const handleRetry = () => {
     setCurrentIndex(0);
     setLives(3);
     setTimeLeft(60);
     setGameOver(false);
     setProgress([]);
-    setQuestionsRound(shuffleArray(questions).slice(0, 10));
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    router.push("/login");
-  };
-
-  const shuffleArray = (array) => {
-    return array
-      .map((value) => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value);
   };
 
   if (loading) {
@@ -138,6 +130,8 @@ export default function GamePage() {
       </div>
     );
   }
+
+  const currentQuestion = questions[currentIndex];
 
   return (
     <>
@@ -157,7 +151,6 @@ export default function GamePage() {
               <span className={styles.timerValue}>{timeLeft}</span>
               <span className={styles.timerLabel}>seg</span>
             </div>
-            <div className={styles.score}>SCORE: {totalScore}</div>
           </div>
           <div className={styles.headerRight}>
             <div className={styles.lives}>❤️ x {lives}</div>
@@ -174,10 +167,10 @@ export default function GamePage() {
                 className={styles.questionContainer}
                 style={{ backgroundColor: feedbackColor || "transparent" }}
               >
-                <h2 className={styles.questionText}>{questionsRound[currentIndex].question}</h2>
+                <h2 className={styles.questionText}>{currentQuestion.question}</h2>
               </div>
               <div className={styles.optionsGrid}>
-                {questionsRound[currentIndex].options.map((option, index) => (
+                {currentQuestion.options.map((option, index) => (
                   <button
                     key={index}
                     className={styles.optionButton}
@@ -190,14 +183,11 @@ export default function GamePage() {
             </div>
           ) : (
             <div className={styles.gameOverScreen}>
-              <h2 className={styles.gameOverText}>
-                {win ? "¡Ganaste!" : "¡Perdiste!"}
-              </h2>
-              <p className={styles.scoreText}>Puntaje de la ronda: {roundScore}</p>
+              <h2 className={styles.gameOverText}>Game Over</h2>
               <button onClick={handleRetry} className={styles.retryButton}>
-                Volver a jugar :D
+                Reintentar
               </button>
-              <button onClick={() => router.push("/")} className={styles.homeButton}>
+              <button onClick={() => router.push("../")} className={styles.homeButton}>
                 Volver al inicio
               </button>
             </div>

@@ -1,0 +1,79 @@
+[
+{
+"question": "¿Qué significa NoSQL?",
+"options": ["Not Only SQL", "No Simple Queries Language", "New Open SQL", "No Server Query Logic"],
+"answer": "Not Only SQL"
+},
+{
+"question": "¿Cuál de las siguientes es una base de datos NoSQL?",
+"options": ["MySQL", "PostgreSQL", "MongoDB", "Oracle"],
+"answer": "MongoDB"
+},
+{
+"question": "¿Qué tipo de estructura de datos utiliza MongoDB?",
+"options": ["Relacional", "Tabla", "Documentos BSON", "Grafos"],
+"answer": "Documentos BSON"
+},
+{
+"question": "¿Qué tipo de base de datos es Redis?",
+"options": ["Relacional", "Columnares", "Clave-valor", "Documental"],
+"answer": "Clave-valor"
+},
+{
+"question": "¿Cuál de los siguientes no es un tipo de base de datos NoSQL?",
+"options": ["Columnares", "Documentales", "Jerárquicas", "Clave-valor"],
+"answer": "Jerárquicas"
+},
+{
+"question": "¿Qué base de datos está optimizada para almacenar grafos?",
+"options": ["Neo4j", "Cassandra", "DynamoDB", "Firebase"],
+"answer": "Neo4j"
+},
+{
+"question": "¿Cuál es una ventaja principal de NoSQL frente a bases de datos relacionales?",
+"options": ["Mejor normalización", "Menor escalabilidad", "Mayor flexibilidad de esquema", "Soporte SQL completo"],
+"answer": "Mayor flexibilidad de esquema"
+},
+{
+"question": "¿Cuál es una característica común de las bases de datos NoSQL?",
+"options": ["Joins complejos", "Esquema fijo", "Escalado vertical", "Alto rendimiento en lecturas"],
+"answer": "Alto rendimiento en lecturas"
+},
+{
+"question": "¿Qué modelo de datos utiliza Cassandra?",
+"options": ["Documentos", "Clave-valor", "Columnares", "Grafos"],
+"answer": "Columnares"
+},
+{
+"question": "¿Qué lenguaje se utiliza para consultar datos en MongoDB?",
+"options": ["SQL", "SPARQL", "JSON", "Mongo Query Language"],
+"answer": "Mongo Query Language"
+},
+{
+"question": "¿Cuál de estas opciones describe mejor a Firebase?",
+"options": ["Base de datos documental en tiempo real", "Motor relacional", "Sistema de archivos", "Base de datos orientada a columnas"],
+"answer": "Base de datos documental en tiempo real"
+},
+{
+"question": "¿Qué base de datos NoSQL es administrada por Amazon?",
+"options": ["DynamoDB", "MongoDB", "Cassandra", "RethinkDB"],
+"answer": "DynamoDB"
+},
+{
+"question": "¿Qué tipo de almacenamiento usa CouchDB?",
+"options": ["JSON", "XML", "CSV", "BSON"],
+"answer": "JSON"
+},
+{
+"question": "¿Cuál de las siguientes opciones es una limitación común de NoSQL?",
+"options": ["Escalabilidad horizontal", "Relaciones complejas", "Sin esquema", "Rendimiento en grandes volúmenes"],
+"answer": "Relaciones complejas"
+},
+{
+"question": "¿Qué base de datos NoSQL es especialmente útil para sesiones y cachés?",
+"options": ["MySQL", "Redis", "MongoDB", "Neo4j"],
+"answer": "Redis"
+}
+]
+
+

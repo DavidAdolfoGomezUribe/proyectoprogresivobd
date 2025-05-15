@@ -2,6 +2,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import styles from "./login.module.css"
+import Link from "next/link"
 
 export default function Login({ onRegisterClick }) {
   const [email, setEmail] = useState("")
@@ -99,7 +100,11 @@ export default function Login({ onRegisterClick }) {
         <button onClick={onRegisterClick} className={styles.linkButton}>
           Regístrate aquí
         </button>
-      </div>
+        </div>
+        <div className="w-[100%] flex justify-center items-center self-center text-1xl pt-2">
+
+          <Link  href={"./"} className="hover:bg-blue-600 p-2 w-full text-center rounded-2xl hover:text-white" > Salir</Link>
+        </div>
     </div>
   )
 }

@@ -25,8 +25,8 @@ export default function Home() {
         <h1 className="titulo text-3xl" >Play_</h1>
        
         <div className="flex flex-row gap-8">
-          <Link href={"/login"} className="w-24 p-2 cursor-pointer  hover:rounded-2xl hover:bg-blue-400">Login</Link>
-          <button className="w-32 p-2 cursor-pointer hover:rounded-2xl hover:bg-blue-400">Leader Board</button>
+          <Link href={"/login"} className="w-24 p-2 cursor-pointer  hover:rounded-2xl hover:bg-blue-600 hover:text-white text-center">Login</Link>
+          <button className="w-32 p-2 cursor-pointer hover:rounded-2xl hover:bg-blue-600 hover:text-white">Leader Board</button>
         </div>
 
       </div>
@@ -46,7 +46,7 @@ export default function Home() {
               
             Pon aprueba tus conocimientos con este juego interactivo
             </p>
-            <button className="text-white bg-blue-600 h-12 rounded-2xl cursor-pointer w-[80%]">Jugar</button>
+            <Link  href={"/juego"} className="text-white bg-blue-600 h-12 rounded-2xl cursor-pointer w-[80%] flex items-center justify-center ">Jugar</Link>
           
         </article>
         
@@ -169,21 +169,21 @@ export default function Home() {
           </div>
           
           <div className="p-4 bg-[#252525] w-1/2  rounded-2xl text-white flex flex-col gap-2">
-            <p>imagen</p>
+            <Image className="w-[100%] h-auto rounded-2xl" src="/brey.png" width={500} height={500} alt="packaje" /> 
             <h1 className="subtitulo text-2xl">Breyner Pinto</h1>
-            <p>Administrador de bases de datos</p>
+            <p className="text-2xl">Administrador de bases de datos</p>
           </div>
           
           <div className="p-4 bg-[#252525] w-1/2  rounded-2xl text-white flex flex-col gap-2">
             <Image className="w-[100%] h-auto rounded-2xl" src="/mat.png" width={500} height={500} alt="packaje" /> 
             <h1 className="subtitulo text-2xl">Mateo Paternina</h1>
-            <p>Director de tecnología</p>
+            <p className="text-2xl">Director de tecnología</p>
           </div>
           
           <div className="p-4 bg-[#252525] w-1/2  rounded-2xl text-white flex flex-col gap-2">
             <Image className="w-[100%] h-auto rounded-2xl" src="/dan.png" width={500} height={500} alt="packaje" /> 
             <h1 className="subtitulo text-2xl">Daniel Cubides</h1>
-            <p>Director de Seguridad de la Información</p>
+            <p className="text-2xl">Director de Seguridad de la Información</p>
           </div>
 
         </article>
