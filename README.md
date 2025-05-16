@@ -12,6 +12,10 @@ El juego consiste en responder una serie de preguntas de opción múltiple dentr
 Además, el juego guarda las puntuaciones acumuladas de cada usuario en una base de datos externa (MockAPI), lo que permite llevar un control del rendimiento total de cada jugador.
 
 ---
+## 🎥 Video
+https://www.youtube.com/watch?v=oM8S2QXanKc
+
+---
 
 ## 🧩 Funcionalidades Principales
 
