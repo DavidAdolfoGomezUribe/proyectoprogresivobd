@@ -26,7 +26,7 @@ export default function Home() {
        
         <div className="flex flex-row gap-8">
           <Link href={"/login"} className="w-24 p-2 cursor-pointer  hover:rounded-2xl hover:bg-blue-600 hover:text-white text-center">Login</Link>
-          <button className="w-32 p-2 cursor-pointer hover:rounded-2xl hover:bg-blue-600 hover:text-white">Leader Board</button>
+          <Link href={"/leaderboard"} className="w-32 p-2 cursor-pointer hover:rounded-2xl hover:bg-blue-600 hover:text-white text-center" >Leader Board</Link>
         </div>
 
       </div>
@@ -61,15 +61,15 @@ export default function Home() {
 
       <section className="pt-20 flex flex-col gap-5 items-center">
         <article>
-          <h1 className="subtitulo text-3xl">Cientos de empresas de juegos confían en nosotros</h1>
+          <h1 className="subtitulo text-3xl text-center">Cientos de empresas de juegos confían en nosotros</h1>
         </article>
 
-        <article className="flex flex-row gap-10">
-          <p>logo 1</p>
-          <p>logo 2</p>
-          <p>logo 3</p>
-          <p>logo 4</p>
-          <p>logo 5</p>
+        <article className="flex flex-row gap-10 justify-center items-center">
+          <Image className="w-1/7 " src="/asus.png" width={500} height={500} alt="packaje" />
+          <Image className="w-1/7 " src="/atari.png" width={500} height={500} alt="packaje" />
+          <Image className="w-1/7 " src="/blizard.webp" width={500} height={500} alt="packaje" />
+          <Image className="w-1/7 " src="/gameloft.png" width={500} height={500} alt="packaje" />
+          <Image className="w-1/7 " src="/ps1.webp" width={500} height={500} alt="packaje" />
 
         </article>
       </section>
